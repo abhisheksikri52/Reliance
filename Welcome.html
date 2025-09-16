@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .head{
+            padding: 1% 4%;
+            background-color: #003366;
+            color: white;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .P1{
+            width: 70%;
+        }
+        .P2{
+            width: 30%;
+            text-align: right;
+            padding-top: 1em;
+        }
+        .P2 img{
+            border-radius: 10px 10px 10px 10px ;
+
+        }
+        .mid{
+            background-color: whitesmoke;
+            background-image: url("../img/home.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            height: 75vh;
+            animation-name: "image";
+            animation-iteration-count: infinite;
+            animation-duration: 30s;
+            animation-delay: 1s;
+        }
+        .foot{
+            padding: 1% 3%;
+            background-color: #003366;
+            
+        }
+        @keyframes image {
+            0%{
+                background-image: url("../img/home.jpg");
+            }
+           20%{
+                background-image: url("../img/home2.jpg");
+            }
+             40%{
+                background-image: url("../img/home3.jpg");
+            }
+             60%{
+                background-image: url("../img/home4.jpg");
+            }
+             80%{
+                background-image: url("../img/home5.jpg");
+            }
+             100%{
+                background-image: url("../img/home6.jpg");
+            }
+
+
+            
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <div class="head">
+        <div class="P1"><h1>Reliance Power Sasan</h1></div>
+    
+        <div class="P2">
+            <img src="../img/insta.jpg" alt="Reliance Power Logo" width="50px" height="50px"> &nbsp; &nbsp;
+            <img src="../img/whats.jpg" alt="Reliance Power Logo" width="50px" height="50px">&nbsp; &nbsp;
+            <a href="tel:+1111111111" style="color: whitesmoke;"> ☎️Contact us</a>&nbsp; &nbsp;
+            <a href="mailto:" style="color: whitesmoke;">✉️Mail us</a>
+        </div>
+    </div>
+    <div class="mid">
+        <h2 style="text-align: bottom; margin: 0%; color: #003366;"><marquee>Your gateway to a sustainable future. Join us in Our Mission</marquee></h2>
+    </div>
+    <div class="foot">
+           <ul style="list-style: none; display: flex; flex-wrap: wrap; gap: 20px; margin: 0%;">
+            <li > <a href="index.html" target="_blank" rel="noopener noreferrer" style="color: white;"><h3>Allot Room</h3></a></li>&nbsp; &nbsp;
+            <li ><a href="Dashboard.html" target="_blank" rel="noopener noreferrer" style="color: white;"><h3>Allotment Dashboard</h3></a></li>&nbsp; &nbsp;
+            <li><a href="register.html" target="_blank" rel="noopener noreferrer" style="color: white;"><h3>Register Employee</h3></a></li>&nbsp; &nbsp;
+            <li><a href="regist-dashboard.html" target="_blank" rel="noopener noreferrer" style="color: white;"><h3>Registration Dashboard</h3></a></li>
+           </ul>
+    </div>
+</body>
+</html>

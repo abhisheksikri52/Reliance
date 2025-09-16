@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - Reliance Power Sasan Hostel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+         .head{
+            padding: 1% 4%;
+            background-color: #003366;
+            color: white;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .P1{
+            width: 70%;
+        }
+        .P2{
+            width: 30%;
+            text-align: right;
+            padding-top: 1em;
+        }
+        .P2 img{
+            border-radius: 10px;
+
+        }
+        body { font-family: Arial, sans-serif; background: #f4f6f8; margin: 0; }
+        main { max-width: 800px; margin: 2em auto; background: #fff; padding: 2em; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);}
+        h2 { color: #003366; }
+        table { width: 100%; border-collapse: collapse; margin-top: 1em; }
+        th, td { border: 1px solid #ccc; padding: 0.5em; text-align: center; }
+        th { background: #003366; color: #fff; }
+        .back-link { margin-top: 1em; display: block; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="head">
+        <div class="P1"><h1>Reliance Power Sasan</h1></div>
+    
+        <div class="P2">
+            <img src="../img/insta.jpg" alt="Reliance Power Logo" width="50px" height="50px"> &nbsp; &nbsp;
+            <img src="../img/whats.jpg" alt="Reliance Power Logo" width="50px" height="50px">&nbsp; &nbsp;
+            <a href="tel:+1111111111" style="color: whitesmoke;"> ☎️Contact us</a>&nbsp; &nbsp;
+            <a href="mailto:" style="color: whitesmoke;">✉️Mail us</a>
+        </div>
+    </div>
+    <main>
+        <h2>Room Allotment Dashboard</h2>
+        <table id="Regist-Dash">
+            <tr>
+                <th>Employee Name</th>
+                <th>Payroll Number</th>
+                <th>Age</th>
+                <th>Phone Number</th>
+                <th>Alt: Phone Number</th>
+                <th>Family Member</th>
+                <th>Company</th>
+                <th>Degination</th>
+                <th id="allot" onclick="buttonFunction(this.praentElement.praentElement)">Allot Room</th>
+               
+            </tr>
+        </table>
+        <a class="back-link" href="register.html">Back to Form</a>
+        <button id="resetBtn" style="margin: 1em auto; display: block; 
+         background: #c00; color: #fff; border: none; padding: 0.7em 1.5em;
+          border-radius: 4px; cursor: pointer;">Reset All Data
+        </button>
+    </main>
+    <script>
+        function buttonFunction() {
+            alert("Button clicked!");
+        }
+        // Add event listener to the button
+        
+        // button functionality to allot room
+        document.getElementById('Regist-Dash').addEventListener('click', function(event) {
+            if (event.target.tagName === 'BUTTON') {
+                let row = event.target.closest('tr');
+                let name = row.cells[0].innerText;
+                let payroll = row.cells[1].innerText;
+                let age = row.cells[2].innerText;
+                let phone1 = row.cells[3].innerText;
+                let phone2 = row.cells[4].innerText;
+                let family = row.cells[5].innerText;
+                let company = row.cells[6].innerText;
+                let degination = row.cells[7].innerText;
+                let room = prompt(`Allot room to ${name} (Payroll: ${payroll})`);
+                if (room) {
+                    alert(`Room ${room} allotted to ${name}.`);
+                    // Here you can add code to save the room allotment if needed
+                }
+            }
+        });
+        // Load data from localStorage and display
+        let data = JSON.parse(localStorage.getItem('registration') || '[]');
+        let table = document.getElementById('Regist-Dash');
+        data.forEach(function(item) {
+            let row = table.insertRow(-1);
+            row.insertCell(0).innerText = item.name;
+            row.insertCell(1).innerText = item.payroll;
+            row.insertCell(2).innerText = item.age;
+            row.insertCell(3).innerText = item.phone1;
+            row.insertCell(4).innerText = item.phone2;
+            row.insertCell(5).innerText = item.family;
+            row.insertCell(6).innerText =  item.company;
+            row.insertCell(7).innerText =  item.degination;
+            row.insertCell(8).innerHTML = `<button style="background-color: #003366; color: white; border: none; padding: 0.5em 1em; cursor: pointer;">Allot Room</button>`;
+        //     let allotCell = row.insertCell(8);
+        //     let allotButton = document.createElement('button');
+        //     allotButton.innerText = 'Allot Room';
+        //     allotButton.style.backgroundColor = '#003366';
+        //     allotButton.style.color = 'white';
+        //     allotButton.style.border = 'none';
+        //     allotButton.style.padding = '0.5em 1em';
+        //     allotButton.style.cursor = 'pointer';
+        //     allotButton.onclick = function() {
+        //         let room = prompt(`Allot room to ${item.name} (Payroll: ${item.payroll})`);
+        //         if (room) {
+        //             alert(`Room ${room} allotted to ${item.name}.`);
+        // }
+        //     };
+        //     allotCell.appendChild(allotButton);
+        }       
+    );
+    // Reset data button functionality
+        document.getElementById('resetBtn').onclick = function() {
+            if (confirm('Are you sure you want to delete all data?')) {
+                localStorage.removeItem('registration');
+                location.reload();
+            }
+        };
+    </script>
+</body>
+</html>

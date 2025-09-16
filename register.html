@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration-form</title>
+    <style>
+         *{
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        h2{
+            color: #003366;
+            text-align: center;
+            padding: 1em;
+        }
+         .head{
+            padding: 1% 4%;
+            background-color: #003366;
+            color: white;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .P1{
+            width: 70%;
+        }
+        .P2{
+            width: 30%;
+            text-align: right;
+            padding-top: 1em;
+        }
+        .P2 img{
+            border-radius: 10px 10px 10px 10px ;
+
+        }
+        .form{
+            width: 500px;
+            background-color: whitesmoke;
+            margin: 5vh auto;
+            border-radius: 10px;
+        }
+        label{
+            display: block;
+            margin-top: 1vh;
+            margin-left: 2vh;
+            margin-bottom: 1vh;
+        }
+        input,select{
+            padding: 0.5em;
+            margin-left: 2vh;
+            width: 80%
+        }
+        button{
+            background-color: #07539f;
+            display: block;
+            padding: 1em;
+            margin-left: 2vh;
+            margin-top: 1vh;
+            margin-bottom: 2vh;
+            border-radius: 10px;
+            border: solid black;
+            color: white;
+        }
+        button:hover{
+            background-color: #288cf0;
+        }
+        
+       
+    </style>
+</head>
+<body>
+    <div class="head">
+        <div class="P1"><h1>Reliance Power Sasan</h1></div>
+    
+        <div class="P2">
+            <img src="../img/insta.jpg" alt="Reliance Power Logo" width="50px" height="50px"> &nbsp; &nbsp;
+            <img src="../img/whats.jpg" alt="Reliance Power Logo" width="50px" height="50px">&nbsp; &nbsp;
+            <a href="tel:+1111111111" style="color: whitesmoke;"> ☎️Contact us</a>&nbsp; &nbsp;
+            <a href="mailto:" style="color: whitesmoke;">✉️Mail us</a>
+        </div>
+    </div>
+    <div class="form">
+        <h2>Registration form</h2>
+        <form action="" id="Registration">
+            <label for="name">Name</label>
+            <input type="text" id="name" required>
+            <label for="payroll">Payroll Number</label>
+            <input type="text" id="payroll" required>
+            <label for="age">Age</label>
+            <input type="number" id="age" required>
+            <label for="phone"> Phone Number</label>
+            <input type="tel" id="phone" required>
+            <label for="phone0"> Alt : Phone Number</label>
+            <input type="tel" id="phone0" required>
+            <label for="family">Family Member</label>
+            <input type="number" id="family" required>
+            <label for="company">Company</label>
+            <select id="company" required>
+                <option value="reliance">Reliance</option>
+                <option value="lotus">SPL</option>
+                <option value="lotus">SPL Mines</option>
+                <option value="lotus">MEPL</option>
+            </select>
+            <label for="degination">Degination</label>
+            <input type="text" id="degination" required>
+            <button onclick="agree()">Submit</button>
+
+        </form>
+        <h3> <a href="regist-dashboard.html" style="text-decoration: none; text-align: center;">Registration List</a></h3>
+    </div>
+    <script>
+        function agree(){
+            confirm('Do You Agree');
+        };
+        
+        document.getElementById('Registration').onsubmit= function (R){
+            R.preventDefault();
+            let data = JSON.parse(localStorage.getItem('registration')||'[]')
+            data.push({
+                name : document.getElementById('name').value,
+                payroll: document.getElementById('payroll').value,
+                age: document.getElementById('age').value,
+                phone1 : document.getElementById('phone0').value,
+                phone2 : document.getElementById('phone').value,
+                company: document.getElementById('company').value,
+                degination: document.getElementById('degination').value
+            })
+            localStorage.setItem('registration', JSON.stringify(data));
+            alert('Registration Successful..!!');
+            this.reset();
+        };
+    </script>
+    
+</body>
+</html>
